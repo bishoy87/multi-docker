@@ -1,0 +1,23 @@
+sudo: required
+services:
+    - docker
+before_install:
+    -docker build bishoy87/react-test -f ./client/Dockerfile.dev .
+
+script:
+    - docker run bishoy87/react-test npm test -- --coverage  
+
+
+
+after_success:
+    - docker build -t bishoy87/multi-docker ./client
+    - docker build -t bishoy87/multi-nginx ./nginx    
+    - docker build -t bishoy87/multi-server ./server
+    - docker build -t bishoy87/multi-worker ./worker
+
+    - echo "$Docker_Password" | docker login -u "$Docker_ID" --password-stdin
+
+    - docker push bishoy87/mutli-client
+    - docker push bishoy87/multi-nginx
+    - docker push bishoy87/multi-server
+    - docker push bishoy87/multi-worker
