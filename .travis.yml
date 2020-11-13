@@ -2,7 +2,7 @@ sudo: required
 services:
     - docker
 before_install:
-    -docker build bishoy87/react-test -f ./client/Dockerfile.dev .
+    -docker build -t bishoy87/react-test -f ./client/Dockerfile.dev ./client
 
 script:
     - docker run bishoy87/react-test npm test -- --coverage  
