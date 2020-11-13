@@ -21,4 +21,3 @@ after_success:
     - docker push bishoy87/multi-nginx
     - docker push bishoy87/multi-server
     - docker push bishoy87/multi-worker
-    jhk
