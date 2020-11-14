@@ -4,7 +4,7 @@ COPY ./package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-RUN chmod +x docker-entrypoint.sh
+RUN chmod 777 /usr/local/bin/docker-entrypoint.sh
 
 FROM nginx 
 EXPOSE 3000
