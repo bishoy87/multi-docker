@@ -1,11 +1,11 @@
 sudo: required
 services:
     - docker
+    
 before_install:
     - docker build -t bishoy87/react-test -f ./client/Dockerfile.dev ./client
-    - echo "BEFORE INSTALL START"
+    - yes | gem update --system --force
     - gem install bundler
-    - echo "BEFORE INSTALL END"
 
 
 script:
