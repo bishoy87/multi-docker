@@ -6,7 +6,6 @@ before_install:
 
 script:
    - docker run bishoy87/react-test npm test -- --coverage
-    RUN chmod 755 docker-entrypoint.sh
 
 
 
