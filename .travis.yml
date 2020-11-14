@@ -3,6 +3,7 @@ services:
     - docker
 before_install:
     - docker build -t bishoy87/react-test -f ./client/Dockerfile.dev ./client
+    - gem install bundler
 
 
 script:
