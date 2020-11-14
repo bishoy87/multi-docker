@@ -5,7 +5,10 @@ before_install:
     - docker build -t bishoy87/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run bishoy87/react-test npm test -- --coverage
+    ENTRYPOINT ["docker-entrypoint.sh"]
+   - docker run bishoy87/react-test npm test -- --coverage
+    RUN chmod 755 docker-entrypoint.sh
+
 
 
 after_success:
@@ -20,4 +23,3 @@ after_success:
     - docker push bishoy87/multi-nginx
     - docker push bishoy87/multi-server
     - docker push bishoy87/multi-worker
-    
